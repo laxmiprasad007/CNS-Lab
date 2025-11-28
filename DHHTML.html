@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Diffie Hellman</title>
+<script type="text/javascript">
+function dh()
+{
+var p=document.f1.prime.value;
+var pr=document.f1.primitive.value;
+var xa=document.f1.aprivate.value;
+var xb=document.f1.bprivate.value;
+var ya=Math.pow(pr,xa)%p;
+var yb=Math.pow(pr,xb)%p;
+var ka=Math.pow(ya,xb)%p;
+var kb=Math.pow(yb,xa)%p;
+f1.apublic.value=ya;
+f1.bpublic.value=yb;
+f1.asecret.value=ka;
+f1.bsecret.value=kb;
+document.getElementById("ap").readOnly = true;
+document.getElementById("bp").readOnly = true;
+document.getElementById("as").readOnly = true;
+document.getElementById("bs").readOnly = true;
+}
+</script>
+</head>
+<body>
+<center>
+<h1>DIFFIE HELLMAN KEY EXCHANGE</h1>
+<table>
+<form name="f1">
+<tr><td>Enter prime number:</td><td><input type="text" 
+name="prime"/></td></tr>
+ 
+<tr><td>Enter primitive root:</td><td><input type="text" 
+name="primitive"/></td></tr>
+ 
+<tr><td>Enter the Xa private key:</td><td><input type="text" 
+name="aprivate"/></td></tr>
+ 
+<tr><td>Enter the Xb private key:</td><td><input type="text" 
+name="bprivate"/></td></tr>
+ 
+<tr><td>&nbsp</td><td><input type="Button" value="Calculate" 
+OnClick="dh()"/></td></tr>
+ 
+<tr><td>Ya public key:</td><td><input type="text" name="apublic" 
+id="ap"/></td></tr>
+<tr><td>Yb public key:</td><td><input type="text" name="bpublic" 
+id="bp"/></td></tr>
+ 
+<tr><td>ka secret key:</td><td><input type="text" name="asecret" 
+id="as"/></td></tr>
+ 
+<tr><td>kb secret key:</td><td><input type="text" name="bsecret" 
+id="bs"/></td></tr>
+<tr><td>&nbsp</td><td><input type="reset" name="Reset"/></td></tr>
+</center>
+</body>
+</html>
